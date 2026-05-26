@@ -647,15 +647,9 @@ def init_llm(model_name: str, api_key: str):
             quantization_config=bnb_config,
             device_map={"": 0},   
             dtype=torch.float16,
-            token="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"
+            token="" #add you token id
         )
-        # model = AutoModelForCausalLM.from_pretrained(
-        #     repo,
-        #     trust_remote_code=True,
-        #     device_map="auto",
-        #     token="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",
-        #     dtype=torch.bfloat16 if torch.cuda.is_available() else torch.float32
-        # )
+    
 
     else:
         model = AutoModelForCausalLM.from_pretrained(
