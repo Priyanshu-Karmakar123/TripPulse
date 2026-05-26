@@ -15,7 +15,7 @@ TRIPPULSE/
 ├── core/                         # LLM wrapper
 ├── tools/                        # Utility tools
 ├── data_manager/                 # Database interface and calls
-├── evaluation/                   # RGPA and TripCraft evaluation metrics
+├── evaluation/                   # RGPA and TripPulse evaluation metrics
 ├── run.py                        # Entry point
 └── agentic.yaml                  # Environment configuration
 ```
