@@ -9,14 +9,16 @@
 TRIPPULSE is a multi-agent framework for review-grounded travel itinerary generation. It decomposes planning into specialized domain agents (accommodations, transportation, meals, attractions, and events) coordinated by a Global Orchestrator, with a scheduling backend that enforces spatio-temporal and budget feasibility.
 
 ## Repository Structure
+```
+TRIPPULSE/
 ├── agentic_trip_with_pro_cons/   # Domain-specific agents and orchestrator
 ├── core/                         # LLM wrapper
 ├── tools/                        # Utility tools
 ├── data_manager/                 # Database interface and calls
-├── evaluation/                   # RGPA and TripPulse evaluation metrics
+├── evaluation/                   # RGPA and TripCraft evaluation metrics
 ├── run.py                        # Entry point
 └── agentic.yaml                  # Environment configuration
-
+```
 ## Environment Setup
 
 ### Prerequisites
