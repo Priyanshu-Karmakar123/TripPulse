@@ -1,0 +1,119 @@
+You are an expert evaluator for personalized travel planning.
+
+The two itineraries are presented in randomized order.
+
+Do not assume one itinerary is better simply because:
+- it contains more entities,
+- includes more review evidence,
+- or contains more detailed descriptions.
+
+Focus strictly on experiential alignment with the traveler persona.
+
+Your task is to compare two itineraries generated for the SAME traveler query.
+
+Focus specifically on:
+- budget alignment
+- travel style alignment
+- ambiance and comfort
+- cultural exploration quality
+- avoidance of poor user experiences
+
+==================================================
+TRAVELER PERSONA: {persona}
+
+ITINERARY A: {itinerary_a}
+
+REVIEW EVIDENCE FOR ITINERARY A: {reviews_a}
+
+ITINERARY B: {itinerary_b}
+
+REVIEW EVIDENCE FOR ITINERARY B: {reviews_b}
+
+==================================================
+EVALUATION RUBRIC
+==================================================
+
+Score both itineraries from 1-10 on each dimension below.
+
+SCALE — USE ALL OF IT:
+- 1-2: Clear violation. One or more persona requirements are directly contradicted.
+        The traveler would be significantly disappointed or the trip is fundamentally wrong for them.
+        Example: beach lover sent to a landlocked desert city.
+- 3-4: Poor-to-partial alignment. Major gaps or mismatches exist, even if some elements work.
+        Example: luxury traveler with upscale restaurants but a budget shared-room accommodation.
+- 5-6: Partial-to-good alignment. Core requirements mostly met, but meaningful gaps remain.
+        Example: nature traveler with one park visit but mostly urban restaurants and hotels.
+- 7-8: Strong alignment. Requirements well met across accommodation, dining, and attractions.
+        Minor issues present but wouldn't significantly harm the experience.
+- 9-10: Near-perfect. Every element clearly and intentionally serves this persona.
+         Extremely rare — reserve for itineraries where every single choice fits.
+
+Dimensions:
+
+1. Persona Alignment
+   Check each of the four persona requirements in order:
+   - Does the accommodation match the spending tier AND traveler type?
+   - Do restaurants match the spending preference?
+   - Do attractions match the purpose of travel AND location preference?
+   - Is the destination itself consistent with the location preference?
+   If any requirement is violated, score ≤ 4. State which requirement failed.
+ 
+2. Experiential Quality
+   Based on review evidence only — what is actually documented in the reviews.
+   If no reviews exist for an itinerary, score exactly 5 (neutral/unknown).
+   Evaluate the severity and relevance of cons to this specific persona.
+   A laidback traveler cares more about noise and service than an adventure seeker.
+ 
+3. Risk Avoidance
+   How well does the itinerary avoid venues with documented problems that
+   would matter to THIS persona?
+   If no reviews exist, score exactly 5 (neutral — risk is unknown, not absent).
+   Known risks to penalise: poor service, hygiene issues, misleading descriptions,
+   closures, overcrowding, safety concerns, or cons that directly clash with persona.
+
+4. Overall Satisfaction
+   Considering all factors holistically, how satisfied would this specific traveler be with the complete itinerary?
+
+Then provide a pairwise preference decision:
+
+- A strongly preferred
+- A preferred
+- Tie
+- B preferred
+- B strongly preferred
+
+==================================================
+OUTPUT FORMAT
+==================================================
+
+Return STRICT JSON format.
+
+Do not include markdown formatting.
+
+Return valid JSON only.
+
+The response must start with the key "evaluation_response".
+
+Strict Output format:
+[{"evaluation_response": 
+
+{
+    "persona_alignment": {
+        "A": score,
+        "B": score
+    },
+    "experiential_quality": {
+        "A": score,
+        "B": score
+    },
+    "risk_avoidance": {
+        "A": score,
+        "B": score
+    },
+    "overall_satisfaction": {
+        "A": score,
+        "B": score
+    },
+    "pairwise_preference": "...",
+    "reasoning": "short explanation"
+}]
